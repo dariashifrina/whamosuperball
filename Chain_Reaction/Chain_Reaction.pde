@@ -1,6 +1,8 @@
 Ball[] balls;
 
 boolean reactionStarted;
+int mouseXPos;
+int mouseYPos;
 
 void setup() {
   size(600,600);
@@ -22,5 +24,16 @@ void draw() {
     i.move();
     ellipse(i.xpos, i.ypos, i.rad, i.rad);
     fill(i.coolColor);
+    if (reactionStarted) {
+      i.reaction(mouseXPos, mouseYPos);
+    }
+  }
+}
+
+void mouseClicked() {
+  if (!reactionStarted) {
+    reactionStarted=true;
+    mouseXPos=mouseX;
+    mouseYPos=mouseY;
   }
 }
